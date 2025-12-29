@@ -1,0 +1,12 @@
+# Binary
+pink-elevenlabs
+pink-voice
+
+# Environment
+.env
+
+# AI docs
+ai-docs/
+
+# macOS
+.DS_Store

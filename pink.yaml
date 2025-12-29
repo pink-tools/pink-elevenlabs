@@ -1,0 +1,26 @@
+name: pink-elevenlabs
+type: cli
+claude_module: ELEVENLABS.md
+
+env_vars:
+  - name: ELEVENLABS_API_KEY
+    required: true
+  - name: ELEVENLABS_TTS_VOICE_ID
+    required: false
+  - name: ELEVENLABS_VOICE_CHANGE_ID
+    required: false
+
+install:
+  unix: |
+    go build -o pink-elevenlabs .
+    sudo ln -sf $(pwd)/pink-elevenlabs /usr/local/bin/pink-elevenlabs
+  windows: |
+    go build -o pink-elevenlabs.exe .
+    if (-not (Test-Path "$env:USERPROFILE\bin")) { New-Item -ItemType Directory -Path "$env:USERPROFILE\bin" -Force }
+    Copy-Item pink-elevenlabs.exe "$env:USERPROFILE\bin\"
+
+run: |
+  pink-elevenlabs --help
+
+health: |
+  pink-elevenlabs --health
